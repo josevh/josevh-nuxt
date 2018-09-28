@@ -29,7 +29,7 @@
     }
 
     nav {
-        font-family: 'Merriweather Sans', sans-serif;
+        font-family: 'Oswald', sans-serif;
         overflow: hidden;
 
         ul {
