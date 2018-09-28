@@ -36,7 +36,7 @@
             font-weight: 400;
             font-size: 16px;
             margin-top: 4rem;
-            font-family: 'Merriweather', sans-serif;
+            font-family: 'Merriweather', serif;
         }
 
         h1, h2, h3, h4, h5 {
@@ -73,6 +73,10 @@
             border-bottom-color: #000;
             text-decoration: none;
         }
+    }
+
+    pre, code {
+        font-family: 'Inconsolata', monospace;
     }
 
 </style>
