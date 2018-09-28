@@ -24,9 +24,15 @@
     },
     computed: {
       projects () {
-        return this.documents.filter(function (document) {
-          return document.type === PrismicDocumentType
-        })
+        return this.documents
+          .filter(function (document) {
+            return document.type === PrismicDocumentType
+          })
+          .slice()
+          .sort(function (a, b) {
+            // desc
+            return new Date(b.first_publication_date) - new Date(a.first_publication_date)
+          })
       }
     },
     asyncData ({ store }) {
