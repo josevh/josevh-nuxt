@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <h2>Writing</h2>
-        <section class="post-listing">
+        <section class="blog-listing">
             <ul class="docs">
                 <li v-if="!blogPosts">No blog posts.</li>
                 <li v-for="blogPost in blogPosts" :key="blogPost.id" class="doc">
@@ -31,9 +31,6 @@
       blogPosts () {
         let component = this
         return this.documents
-          .filter(function (document) {
-            return document.type === PrismicDocumentType
-          })
           .slice()
           .sort(function (a, b) {
             // desc

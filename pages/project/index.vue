@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <h2>Projects</h2>
-        <section class="projects listing">
+        <section class="project-listing">
             <ul class="docs">
                 <li v-for="project in projects" :key="project.id" class="doc">
                     <div class="name"><a v-for="(title, index) in project.data.title" :key="index"
@@ -28,9 +28,6 @@
     computed: {
       projects () {
         return this.documents
-          .filter(function (document) {
-            return document.type === PrismicDocumentType
-          })
           .slice()
           .sort(function (a, b) {
             // desc
