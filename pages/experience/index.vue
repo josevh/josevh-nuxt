@@ -4,9 +4,11 @@
         <section class="experience-listing">
             <ul class="docs">
                 <li v-for="experience in experiences" :key="experience.id" class="doc">
-                    <div class="name">{{ experience.data.position[0].text }}</div>
+                    <div class="position"><h4>{{ experience.data.position[0].text }}</h4></div>
+                    <div>{{ experience.data.from }} - {{ experience.data.to }}</div>
+                    <div>{{ experience.data.employer[0].text }} | {{ experience.data.location[0].text }}</div>
                     <div class="desc"
-                         v-html="prismicDom.RichText.asHtml(experience.data.description, linkResolver, htmlSerializer)"></div>
+                         v-html="prismicDom.RichText.asHtml(experience.data.description, linkResolver)"></div>
                 </li>
             </ul>
         </section>
@@ -61,6 +63,14 @@
 
         li.doc {
             margin-bottom: 1.5rem;
+
+            .position {
+
+            }
+
+            .desc {
+
+            }
         }
     }
 </style>
