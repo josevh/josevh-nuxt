@@ -6,7 +6,7 @@
             <div v-if="documentDateStr" class="timestamp">
                 <small>{{ documentDateStr }}</small>
             </div>
-            <div class="rich-text" v-html="prismicDom.RichText.asHtml(document.content, linkResolver)"></div>
+            <div class="rich-text" v-html="prismicDom.RichText.asHtml(document.content, linkResolver, htmlSerializer)"></div>
         </div>
     </div>
 </template>
@@ -17,7 +17,6 @@
   import LinkResolver from '~~/LinkResolver'
   import { Date } from 'prismic-dom'
   import { highlightAuto } from 'highlight.js'
-
   import 'highlight.js/styles/monokai-sublime.css'
 
   export default {
@@ -44,19 +43,18 @@
         })
       }
     },
-    mounted () {
-      // highlight code
-      document.querySelectorAll('.rich-text pre').forEach(function (elem) {
-        // pre => pre>code
-        let contents = elem.textContent
-        elem.innerHTML = ''
-
-        let code = document.createElement('code')
-        code.innerHTML = highlightAuto(contents).value
-        code.classList.add('hljs')
-
-        elem.appendChild(code)
-      })
+    methods: {
+      htmlSerializer (type, element, content, children) {
+        let Elements = this.prismicDom.RichText.Elements
+        switch (type) {
+          case Elements.preformatted:
+            // prep preformatted text for highlighting
+            // @link https://prismic.io/docs/javascript/templating/rich-text
+            return '<pre><code class="hljs">' + highlightAuto(element.text).value + '</code></pre>';
+          default:
+            return null;
+        }
+      }
     },
     asyncData ({params, error, payload, store}) {
       if (payload) {
