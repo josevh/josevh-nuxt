@@ -3,18 +3,40 @@
         <div class="empty" v-if="!document">Unable to locate requested project.</div>
         <div v-else>
             <h2 class="title">{{document.title[0].text}}</h2>
-            <p v-for="(description, index) in document.description" :key="index" class="description">{{ description.text }}</p>
+            <div class="rich-text" v-html="prismicDom.RichText.asHtml(document.description, linkResolver, htmlSerializer)"></div>
         </div>
     </div>
 </template>
 
 <script>
+
   const Prismic = require('prismic-javascript')
+  const PrismicDom = require('prismic-dom')
+  import LinkResolver from '~~/LinkResolver'
+  import { Date } from 'prismic-dom'
+  import { highlightAuto } from 'highlight.js'
+  import 'highlight.js/styles/monokai-sublime.css'
 
   export default {
     data () {
       return {
-        document: null
+        document: null,
+        prismicDom: PrismicDom,
+        linkResolver: LinkResolver,
+        prismicDate: Date
+      }
+    },
+    methods: {
+      htmlSerializer (type, element, content, children) {
+        let Elements = this.prismicDom.RichText.Elements
+        switch (type) {
+          case Elements.preformatted:
+            // prep preformatted text for highlighting
+            // @link https://prismic.io/docs/javascript/templating/rich-text
+            return '<pre><code class="hljs">' + highlightAuto(element.text).value + '</code></pre>';
+          default:
+            return null;
+        }
       }
     },
     asyncData ({params, error, payload, store}) {
