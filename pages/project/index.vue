@@ -2,10 +2,13 @@
     <div class="content">
         <h2>Projects</h2>
         <section class="projects listing">
-            <ul>
-                <li v-for="project in projects" :key="project.id"><span class="name"><a
-                        v-for="(title, index) in project.data.title" :key="index" :href="'/project/'+project.uid">{{ title.text }}</a>:&nbsp;</span><span
-                        class="desc">A fast, simple & powerful blog framework</span></li>
+            <ul class="docs">
+                <li v-for="project in projects" :key="project.id" class="doc">
+                    <div class="name"><a v-for="(title, index) in project.data.title" :key="index"
+                                         :href="'/project/'+project.uid">{{ title.text }}</a>:&nbsp;
+                    </div>
+                    <div class="desc">A fast, simple & powerful blog framework</div>
+                </li>
             </ul>
         </section>
     </div>
@@ -35,7 +38,7 @@
           })
       }
     },
-    asyncData ({ store }) {
+    asyncData ({store}) {
       return Prismic.getApi(store.state.prismicApiEndpoint)
         .then((api) => {
           return api.query(
@@ -48,3 +51,14 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+    .content ul.docs {
+        list-style-type: none;
+        padding-left: 0;
+
+        li.doc {
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>
