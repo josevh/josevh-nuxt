@@ -6,7 +6,8 @@
             <div v-if="documentDateStr" class="timestamp">
                 <small>{{ documentDateStr }}</small>
             </div>
-            <div class="rich-text" v-html="prismicDom.RichText.asHtml(document.content, linkResolver, htmlSerializer)"></div>
+            <div class="rich-text"
+                 v-html="prismicDom.RichText.asHtml(document.content, linkResolver, htmlSerializer)"></div>
         </div>
     </div>
 </template>

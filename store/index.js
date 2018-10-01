@@ -4,14 +4,8 @@ export const state = () => ({
   prismicApiEndpoint: 'https://josevhcom.cdn.prismic.io/api/v2'
 })
 
-export const getters = () => ({
+export const getters = () => ({})
 
-})
+export const mutations = () => ({})
 
-export const mutations = () => ({
-
-})
-
-export const actions = () => ({
-
-})
+export const actions = () => ({})

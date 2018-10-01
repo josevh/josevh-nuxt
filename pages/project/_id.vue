@@ -3,7 +3,8 @@
         <div class="empty" v-if="!document">Unable to locate requested project.</div>
         <div v-else>
             <h2 class="title">{{document.title[0].text}}</h2>
-            <div class="rich-text" v-html="prismicDom.RichText.asHtml(document.description, linkResolver, htmlSerializer)"></div>
+            <div class="rich-text"
+                 v-html="prismicDom.RichText.asHtml(document.description, linkResolver, htmlSerializer)"></div>
         </div>
     </div>
 </template>

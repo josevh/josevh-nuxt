@@ -3,11 +3,21 @@
         <!--<h1>{{ siteTitle }}</h1>-->
         <nav>
             <ul>
-                <li><nuxt-link to="/" class="brand">{{ $store.state.siteTitle }}</nuxt-link></li
-                ><li><nuxt-link to="/blog">Blog</nuxt-link></li
-                ><li><nuxt-link to="/project">Projects</nuxt-link></li
-                ><li><a href="/experience">Experience</a></li
-                ><li><a href="#">Contact</a></li>
+                <li>
+                    <nuxt-link to="/" class="brand">{{ $store.state.siteTitle }}</nuxt-link>
+                </li
+                >
+                <li>
+                    <nuxt-link to="/blog">Blog</nuxt-link>
+                </li
+                >
+                <li>
+                    <nuxt-link to="/project">Projects</nuxt-link>
+                </li
+                >
+                <li><a href="/experience">Experience</a></li
+                >
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
