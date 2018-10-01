@@ -16,8 +16,7 @@
   const PrismicDom = require('prismic-dom')
   import LinkResolver from '~~/LinkResolver'
   import { Date } from 'prismic-dom'
-  import { highlightAuto } from 'highlight.js'
-  import 'highlight.js/styles/monokai-sublime.css'
+  import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
 
   export default {
     data () {
@@ -28,6 +27,7 @@
         prismicDate: Date
       }
     },
+    mixins: [htmlSerializer],
     computed: {
       documentDate () {
         if (!this.document) return null
@@ -41,19 +41,6 @@
           month: 'long',
           day: 'numeric'
         })
-      }
-    },
-    methods: {
-      htmlSerializer (type, element, content, children) {
-        let Elements = this.prismicDom.RichText.Elements
-        switch (type) {
-          case Elements.preformatted:
-            // prep preformatted text for highlighting
-            // @link https://prismic.io/docs/javascript/templating/rich-text
-            return '<pre><code class="hljs">' + highlightAuto(element.text).value + '</code></pre>';
-          default:
-            return null;
-        }
       }
     },
     asyncData ({params, error, payload, store}) {
