@@ -63,6 +63,8 @@
 </script>
 
 <style lang="scss" scoped>
+    $breakpoint: 768px;
+
     .content ul.docs {
         list-style-type: none;
         padding-left: 0;
@@ -74,12 +76,27 @@
             span {
                 display: inline-block;
                 vertical-align: top;
-            }
-            .date {
-                width: 120px;
-            }
-            .name {
-                width: calc(100% - 120px);
+
+                @media screen and (max-width: $breakpoint) {
+                    display: block;
+                }
+
+                &.date {
+                    width: 120px;
+
+                    @media screen and (max-width: $breakpoint) {
+                        width: 100%;
+                        font-size: 0.875rem;
+                    }
+                }
+
+                &.name {
+                    width: calc(100% - 120px);
+
+                    @media screen and (max-width: $breakpoint) {
+                        width: 100%;
+                    }
+                }
             }
         }
     }
