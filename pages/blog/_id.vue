@@ -9,10 +9,10 @@
             <div class="rich-text"
                  v-html="prismicDom.RichText.asHtml(document.content, linkResolver, htmlSerializer)"></div>
             <div class="image-gallery" v-if="documentImageGalleryImages.length > 0">
-                <gallery :images="documentImageGalleryImages" :index="galleryIndex"
-                         @close="galleryIndex = null"></gallery>
+                <gallery :images="documentImageGalleryImages" :index="imageGalleryIndex"
+                         @close="imageGalleryIndex = null"></gallery>
                 <div class="thumbnail"
-                     @click="galleryIndex = 0"
+                     @click="imageGalleryIndex = 0"
                      :style="{ backgroundImage: 'url(' + documentImageGalleryImages[0] + ')', width: '300px', height: '200px' }"
                 ></div>
             </div>
@@ -32,7 +32,7 @@
         document: null,
         prismicDom: PrismicDom,
         linkResolver: LinkResolver,
-        galleryIndex: null
+        imageGalleryIndex: null
       }
     },
     mixins: [htmlSerializer],
