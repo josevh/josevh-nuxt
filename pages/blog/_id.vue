@@ -3,6 +3,7 @@
         <div class="empty" v-if="!document">Unable to locate requested project.</div>
         <div v-else>
             <h2 class="title">{{document.title[0].text}}</h2>
+            <!-- TODO: featured image -->
             <div v-if="documentDateStr" class="timestamp">
                 <small>{{ documentDateStr }}</small>
             </div>
@@ -21,6 +22,7 @@
                     ></div>
                 </no-ssr>
             </div>
+            <!-- TODO: next/prev posts -->
         </div>
     </div>
 </template>
