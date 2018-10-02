@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <span class="copyright">&copy; {{ $store.state.siteAuthor }} 2018</span>
+        <span class="copyright">&copy; 2018 {{ $store.state.siteAuthor }}</span>
     </footer>
 </template>
 
