@@ -69,6 +69,15 @@
             color: #999999;
             font-family: 'Oswald', sans-serif;
         }
+    }
+</style>
+<style lang="scss">
+    .content .block-img {
+        text-align: center;
 
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     }
 </style>
