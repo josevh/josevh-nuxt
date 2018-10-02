@@ -3,13 +3,13 @@
         <h2>Exp</h2>
         <section class="experience-listing">
             <ul class="docs">
-                <li v-for="experience in experiences" :key="experience.id" class="doc">
+                <li v-for="(experience, index) in experiences" :key="experience.id" class="doc">
                     <div class="position">
                         <h4>{{ experience.data.position[0].text }}
                             <small>{{ experience.data.employer[0].text }}</small>
                         </h4>
                     </div>
-                    <div>{{ experience.data.from }} - {{ experience.data.to }}</div>
+                    <div>{{ experience.data.from }} - {{ !!experience.data.to ? experience.data.to : 'Present' }}</div>
                     <div class="desc"
                          v-html="prismicDom.RichText.asHtml(experience.data.description, linkResolver)"></div>
                 </li>
@@ -74,10 +74,6 @@
                         color: #666666;
                     }
                 }
-            }
-
-            .desc {
-
             }
         }
     }
