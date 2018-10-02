@@ -44,5 +44,8 @@
 </script>
 
 <style lang="scss" scoped>
+    .headline h1 {
+        margin-top: 1.5rem;
+    }
 </style>
 

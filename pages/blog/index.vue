@@ -65,39 +65,46 @@
 <style lang="scss" scoped>
     $breakpoint: 768px;
 
-    .content ul.docs {
-        list-style-type: none;
-        padding-left: 0;
+    .content {
+        & > h2 {
+            margin: 1.5rem 0;
+        }
 
-        li.doc {
-            margin-bottom: 1.5rem;
-            position: relative;
+        ul.docs {
+            list-style-type: none;
+            padding-left: 0;
 
-            span {
-                display: inline-block;
-                vertical-align: top;
+            li.doc {
+                margin-bottom: 1.5rem;
+                position: relative;
 
-                @media screen and (max-width: $breakpoint) {
-                    display: block;
-                }
-
-                &.date {
-                    width: 120px;
+                span {
+                    display: inline-block;
+                    vertical-align: top;
 
                     @media screen and (max-width: $breakpoint) {
-                        width: 100%;
-                        font-size: 0.875rem;
+                        display: block;
                     }
-                }
 
-                &.name {
-                    width: calc(100% - 120px);
+                    &.date {
+                        width: 120px;
 
-                    @media screen and (max-width: $breakpoint) {
-                        width: 100%;
+                        @media screen and (max-width: $breakpoint) {
+                            width: 100%;
+                            font-size: 0.875rem;
+                        }
+                    }
+
+                    &.name {
+                        width: calc(100% - 120px);
+
+                        @media screen and (max-width: $breakpoint) {
+                            width: 100%;
+                        }
                     }
                 }
             }
         }
     }
+
 </style>

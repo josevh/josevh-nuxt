@@ -40,3 +40,9 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+    .content > .title {
+        margin: 1.5rem 0;
+    }
+</style>

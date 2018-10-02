@@ -61,6 +61,7 @@
 <style lang="scss" scoped>
     .content {
         .title {
+            margin-top: 1.5rem;
             margin-bottom: 0;
         }
 

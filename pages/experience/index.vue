@@ -64,20 +64,26 @@
 </script>
 
 <style lang="scss" scoped>
-    .content ul.docs {
-        list-style-type: none;
-        padding-left: 0;
+    .content {
+        & > h2 {
+            margin: 1.5rem 0;
+        }
 
-        li.doc {
-            margin-bottom: 1.5rem;
+        ul.docs {
+            list-style-type: none;
+            padding-left: 0;
 
-            .position {
-                h4 {
-                    margin-bottom: 0;
+            li.doc {
+                margin-bottom: 1.5rem;
 
-                    small {
-                        font-weight: 400;
-                        color: #666666;
+                .position {
+                    h4 {
+                        margin-bottom: 0;
+
+                        small {
+                            font-weight: 400;
+                            color: #666666;
+                        }
                     }
                 }
             }
