@@ -4,9 +4,12 @@
         <section class="experience-listing">
             <ul class="docs">
                 <li v-for="experience in experiences" :key="experience.id" class="doc">
-                    <div class="position"><h4>{{ experience.data.position[0].text }}</h4></div>
+                    <div class="position">
+                        <h4>{{ experience.data.position[0].text }}
+                            <small>{{ experience.data.employer[0].text }}</small>
+                        </h4>
+                    </div>
                     <div>{{ experience.data.from }} - {{ experience.data.to }}</div>
-                    <div>{{ experience.data.employer[0].text }} | {{ experience.data.location[0].text }}</div>
                     <div class="desc"
                          v-html="prismicDom.RichText.asHtml(experience.data.description, linkResolver)"></div>
                 </li>
@@ -20,7 +23,6 @@
   const PrismicDom = require('prismic-dom')
   const PrismicDocumentType = 'experience'
   import LinkResolver from '~~/LinkResolver'
-  import { Date } from 'prismic-dom'
 
   export default {
     name: 'ExperienceIndex',
@@ -28,8 +30,7 @@
       return {
         documents: [],
         prismicDom: PrismicDom,
-        linkResolver: LinkResolver,
-        prismicDate: Date
+        linkResolver: LinkResolver
       }
     },
     computed: {
@@ -65,7 +66,14 @@
             margin-bottom: 1.5rem;
 
             .position {
+                h4 {
+                    margin-bottom: 0;
 
+                    small {
+                        font-weight: 400;
+                        color: #666666;
+                    }
+                }
             }
 
             .desc {
