@@ -1,6 +1,7 @@
 <template>
     <div class="content">
-        <h2>Writing</h2>
+        <h2>Blog</h2>
+
         <section class="blog-listing">
             <ul class="docs">
                 <li v-if="!blogPosts">No blog posts.</li>
