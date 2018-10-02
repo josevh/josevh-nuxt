@@ -14,7 +14,6 @@
   const Prismic = require('prismic-javascript')
   const PrismicDom = require('prismic-dom')
   import LinkResolver from '~~/LinkResolver'
-  import { Date } from 'prismic-dom'
   import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
 
   export default {
@@ -22,8 +21,7 @@
       return {
         document: null,
         prismicDom: PrismicDom,
-        linkResolver: LinkResolver,
-        prismicDate: Date
+        linkResolver: LinkResolver
       }
     },
     mixins: [htmlSerializer],
