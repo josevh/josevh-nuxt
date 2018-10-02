@@ -30,13 +30,16 @@
             flex-direction: column;
             max-width: 42rem;
             padding: 0 2rem;
-            margin: 0 auto;
             background-color: #F8F8F8;
             color: #666666;
             font-weight: 400;
             font-size: 16px;
-            margin-top: 4rem;
+            margin: 4rem auto;
             font-family: 'Merriweather', serif;
+
+            @media screen and (max-width: 768px) {
+                margin: 2rem auto;
+            }
         }
 
         h1, h2, h3, h4, h5 {
