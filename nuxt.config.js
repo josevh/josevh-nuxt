@@ -56,7 +56,7 @@ module.exports = {
         })
         .then((response) => {
           return response.results.map((doc) => {
-            let route = linkResolver(doc);
+            let route = linkResolver(doc)
 
             return {
               route: route,
@@ -66,6 +66,11 @@ module.exports = {
         })
     },
     subFolders: false
-  }
+  },
+  modules: [
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-77365099-1'
+    }]
+  ]
 }
 
