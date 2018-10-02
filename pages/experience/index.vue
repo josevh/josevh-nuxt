@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <h2>Exp</h2>
+        <h2>Experience</h2>
         <section class="experience-listing">
             <ul class="docs">
                 <li v-for="experience in experiences" :key="experience.id" class="doc">
