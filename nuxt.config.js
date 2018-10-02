@@ -73,7 +73,7 @@ module.exports = {
     }]
   ],
   plugins: [
-    { src: '~/plugins/vue-gallery.js', ssr: false }
+    { src: '~/plugins/vue-image-gallery', ssr: false }
   ]
 }
 

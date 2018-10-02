@@ -9,12 +9,17 @@
             <div class="rich-text"
                  v-html="prismicDom.RichText.asHtml(document.content, linkResolver, htmlSerializer)"></div>
             <div class="image-gallery" v-if="documentImageGalleryImages.length > 0">
-                <gallery :images="documentImageGalleryImages" :index="imageGalleryIndex"
-                         @close="imageGalleryIndex = null"></gallery>
-                <div class="thumbnail"
-                     @click="imageGalleryIndex = 0"
-                     :style="{ backgroundImage: 'url(' + documentImageGalleryImages[0] + ')', width: '300px', height: '200px' }"
-                ></div>
+                <no-ssr placeholder="Loading...">
+                    <gallery :images="documentImageGalleryImages"
+                             :index="imageGalleryIndex"
+                             ref="imageGalleryWrap"
+                             @onopen="onImageGalleryOpen"
+                             @close="imageGalleryIndex = null"></gallery>
+                    <div class="thumbnail"
+                         @click="imageGalleryIndex = 0"
+                         :style="{ backgroundImage: 'url(' + documentImageGalleryImages[0].href + ')' }"
+                    ></div>
+                </no-ssr>
             </div>
         </div>
     </div>
@@ -56,8 +61,17 @@
             return item.image_gallery_item_image.url.trim() !== ''
           })
           .map(function (item) {
-            return item.image_gallery_item_image.url
+            return {
+              title: item.image_gallery_item_caption[0].text,
+              href: item.image_gallery_item_image.url
+            }
           })
+      }
+    },
+    methods: {
+      onImageGalleryOpen () {
+        // override 'X' for '×'
+        this.$refs.imageGalleryWrap.$el.querySelector('.close').innerHTML = '×';
       }
     },
     asyncData ({params, error, payload, store}) {
@@ -96,6 +110,27 @@
         img {
             max-width: 100%;
             height: auto;
+        }
+    }
+    .image-gallery {
+        .blueimp-gallery a.close {
+            font-family: sans-serif;
+            border-bottom: none;
+        }
+        .thumbnail {
+            margin: 0 auto;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #666;
+            box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
+            transition: box-shadow 250ms, border-width 125ms;
+            background-clip: padding-box;
+
+            &:hover {
+                cursor: pointer;
+                box-shadow: none;
+                border-width: 3px;
+            }
         }
     }
 </style>
