@@ -30,7 +30,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .content {
         text-align: center;
 
@@ -48,14 +48,15 @@
 
                 a {
                     border-bottom: none;
-
-                    svg {
-                        width: 2.5rem;
-                        height: 2.5rem;
-                    }
                 }
-
             }
         }
+    }
+</style>
+
+<style lang="scss">
+    ul.contact-links li.contact-link a svg {
+        width: 2.5rem;
+        height: 2.5rem;
     }
 </style>
