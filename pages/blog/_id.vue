@@ -8,6 +8,13 @@
             </div>
             <div class="rich-text"
                  v-html="prismicDom.RichText.asHtml(document.content, linkResolver, htmlSerializer)"></div>
+            <div class="image-gallery" v-if="document.image_gallery.length > 0">
+                <gallery :images="documentImageGalleryImages" :index="galleryIndex" @close="galleryIndex = null"></gallery>
+                <div class="thumbnail"
+                     @click="galleryIndex = 0"
+                     :style="{ backgroundImage: 'url(' + documentImageGalleryImages[0] + ')', width: '300px', height: '200px' }"
+                ></div>
+            </div>
         </div>
     </div>
 </template>
@@ -23,7 +30,8 @@
       return {
         document: null,
         prismicDom: PrismicDom,
-        linkResolver: LinkResolver
+        linkResolver: LinkResolver,
+        galleryIndex: null
       }
     },
     mixins: [htmlSerializer],
@@ -39,6 +47,11 @@
           year: 'numeric',
           month: 'long',
           day: 'numeric'
+        })
+      },
+      documentImageGalleryImages () {
+        return this.document.image_gallery.map(function (item) {
+          return item.image_gallery_item_image.url
         })
       }
     },

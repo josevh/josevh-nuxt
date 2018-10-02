@@ -71,6 +71,9 @@ module.exports = {
     ['@nuxtjs/google-analytics', {
       id: 'UA-77365099-1'
     }]
+  ],
+  plugins: [
+    { src: '~/plugins/vue-gallery.js', ssr: false }
   ]
 }
 
