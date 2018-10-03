@@ -2,20 +2,17 @@
     <div class="content">
         <section class="headline"><h1>Web Developer. Application Developer. Technology enthusiast.</h1></section>
         <section class="message">
+            <h4>Who I am</h4>
+            <p>My name is Jose Victor Herrera. I am a web/app/etc developer in Los Angeles, CA.</p>
+        </section>
+        <section class="message">
             <h4>What I do</h4>
-            <p>I am currently part of the awesome web development team at Brighton Inc. There, I focus my efforts on
-                both frontend and backend development. I am strengthening my competencies in HTML/CSS/JS as well as PHP
-                and MySQL development. I work with frontend technologies such as Vue.js as well as develop the backend
-                APIs that drive them.</p>
+            <p>For myself, I experiment with new technologies and languages. From C# in Unity to Java for Android.</p>
+            <p>For Brighton Collectibles, I write applications that help the internal company efficiency as well as empower our customers.</p>
         </section>
         <section class="message">
             <h4>Where I'm headed</h4>
-            <p>My goal is to become an established Android application developer. With that in mind, I have so far
-                released an Android app to begin to learn the environment. My plan is to release another app by end of
-                year to further develop my abilities.</p>
-            <p>In my spare time, I have also begun to experiment with Unity game development using C#. I hope to can
-                find a nice intersection of Android and game development which I will unite both my interests and
-                goals.</p>
+            <p>I am in pursuit of my undergrad degree and seek to delve deeper into the depths of computer science.</p>
         </section>
     </div>
 </template>
@@ -38,14 +35,26 @@
           return document.type === TypeProject
         })
       }
-    },
-    components: {}
+    }
   }
 </script>
 
 <style lang="scss" scoped>
-    .headline h1 {
-        margin-top: 1.5rem;
+
+    .content {
+        .headline h1 {
+            margin-top: 1.5rem;
+        }
+
+        section.message {
+            h4 {
+                margin: 1.5rem 0 0;
+            }
+        }
+
+        p > code {
+            font-weight: bold;
+        }
     }
 </style>
 
