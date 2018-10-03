@@ -167,7 +167,7 @@
             margin: 0 auto;
             width: 300px;
             height: 200px;
-            border: 1px solid #666;
+            border: 1px solid #333;
             box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
             transition: box-shadow 250ms, border-width 125ms;
             background-clip: padding-box;
