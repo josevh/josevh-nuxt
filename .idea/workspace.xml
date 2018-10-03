@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b31b5b7a-e563-4349-9699-817f8eacd06f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/project/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project/index.vue" afterDir="false" />
-    </list>
+    <list default="true" id="b31b5b7a-e563-4349-9699-817f8eacd06f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +70,14 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5">
+    <splitter split-orientation="vertical" split-proportion="0.730482">
       <split-first>
         <leaf>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pages/project/index.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="528">
-                  <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+                <state relative-caret-position="624">
+                  <caret line="39" column="87" selection-start-line="39" selection-start-column="87" selection-end-line="39" selection-end-column="87" />
                   <folding>
                     <element signature="e#801#843#0" expanded="true" />
                   </folding>
@@ -95,7 +92,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pages/blog/_id.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="416">
+                <state relative-caret-position="131">
                   <caret line="128" column="35" lean-forward="true" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
                   <folding>
                     <element signature="e#2035#2077#0" expanded="true" />
@@ -344,12 +341,12 @@
       <workItem from="1538431545747" duration="1131000" />
       <workItem from="1538487459081" duration="9412000" />
       <workItem from="1538499809630" duration="12443000" />
-      <workItem from="1538573646884" duration="15995000" />
+      <workItem from="1538573646884" duration="16101000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94336000" />
+    <option name="totallyTimeSpent" value="94442000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -624,7 +621,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/blog/_id.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
+        <state relative-caret-position="131">
           <caret line="128" column="35" lean-forward="true" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
           <folding>
             <element signature="e#2035#2077#0" expanded="true" />
@@ -634,8 +631,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/project/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+        <state relative-caret-position="624">
+          <caret line="39" column="87" selection-start-line="39" selection-start-column="87" selection-end-line="39" selection-end-column="87" />
           <folding>
             <element signature="e#801#843#0" expanded="true" />
           </folding>

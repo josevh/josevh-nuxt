@@ -37,7 +37,7 @@
           .slice()
           .sort(function (a, b) {
             // desc
-            return new Date(b.first_publication_date) - new Date(a.first_publication_date)
+            return new Date(b.last_publication_date) - new Date(a.last_publication_date)
           })
       }
     }
