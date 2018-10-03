@@ -4,8 +4,8 @@
         <p>I live in Los Angeles, CA.<br>I am currently a Web Developer at Brighton Collectibles.</p>
         <ul class="contact-links">
             <li class="contact-link"><a
-                    href="mailto:&#106;&#111;&#115;&#101;&#118;&#105;&#099;&#116;&#111;&#114;&#104;&#101;&#114;&#114;&#101;&#114;&#097;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?Subject=Hello%20Jose"
-                    data-toggle="tooltip" data-placement="bottom" title="Email" v-html="icons.email"></a></li>
+                    href="mailto:jose@josevh.com?Subject=Hello%20Jose"
+                    v-html="icons.email"></a></li>
             <li class="contact-link"><a href="http://github.com/josevh" data-toggle="tooltip" data-placement="bottom"
                                         title="GitHub" target="_blank" v-html="icons.github"></a></li>
             <li class="contact-link"><a href="https://linkedin.com/in/josevictorherrera" data-toggle="tooltip"
