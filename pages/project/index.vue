@@ -6,10 +6,9 @@
             <ul class="docs">
                 <li v-for="project in projects" :key="project.id" class="doc">
                     <!-- TODO: featured image -->
-                    <div class="name"><a v-for="(title, index) in project.data.title" :key="index"
-                                         :href="'/project/'+project.uid">{{ title.text }}</a>:&nbsp;
-                    </div>
-                    <div class="desc">A fast, simple & powerful blog framework</div>
+                    <div class="name"><h3 v-for="(title, index) in project.data.title" :key="index">{{ title.text }}</h3></div>
+                    <div class="desc rich-text"
+                         v-html="prismicDom.RichText.asHtml(project.data.description, linkResolver, htmlSerializer)"></div>
                 </li>
             </ul>
         </section>
@@ -17,10 +16,20 @@
 </template>
 
 <script>
+  const PrismicDom = require('prismic-dom')
   const PrismicDocumentType = 'project'
+  import LinkResolver from '~~/LinkResolver'
+  import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
 
   export default {
     name: 'ProjectIndex',
+    data () {
+      return {
+        prismicDom: PrismicDom,
+        linkResolver: LinkResolver
+      }
+    },
+    mixins: [htmlSerializer],
     computed: {
       projects () {
         return this.$store.getters.docsByType(PrismicDocumentType)
@@ -45,7 +54,15 @@
             padding-left: 0;
 
             li.doc {
-                margin-bottom: 1.5rem;
+                margin-bottom: 2.5rem;
+
+                .name > h3 {
+                    margin-bottom: 0;
+                }
+
+                .desc {
+                    padding-left: 1.5rem;
+                }
             }
         }
     }
