@@ -14,6 +14,7 @@
                          v-html="prismicDom.RichText.asHtml(experience.data.description, linkResolver)"></div>
                 </li>
             </ul>
+            <!-- TODO: languages used -->
         </section>
     </div>
 </template>
