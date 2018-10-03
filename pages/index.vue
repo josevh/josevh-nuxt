@@ -7,8 +7,10 @@
         </section>
         <section class="message">
             <h4>What I do</h4>
-            <p>For myself, I experiment with new technologies and languages. From <code>C#</code> in Unity to <code>Java</code> for Android.</p>
-            <p>For Brighton Collectibles, I write applications in <code>PHP</code> and <code>Javascript</code> that help the internal company efficiency as well as empower our customers.</p>
+            <p>For myself, I experiment with new technologies and languages. From <code>C#</code> in Unity to
+                <code>Java</code> for Android.</p>
+            <p>For Brighton Collectibles, I write applications in <code>PHP</code> and <code>Javascript</code> that help
+                the internal company efficiency as well as empower our customers.</p>
         </section>
         <section class="message">
             <h4>Where I'm headed</h4>
@@ -57,4 +59,3 @@
         }
     }
 </style>
-
