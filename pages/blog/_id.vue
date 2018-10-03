@@ -43,6 +43,8 @@
   import LinkResolver from '~~/LinkResolver'
   import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
 
+  // TODO: fix date
+
   export default {
     name: 'BlogPostItem',
     head () {
