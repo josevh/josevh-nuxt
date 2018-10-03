@@ -6,10 +6,8 @@
             <li class="contact-link"><a
                     href="mailto:jose@josevh.com?Subject=Hello%20Jose"
                     v-html="icons.email"></a></li>
-            <li class="contact-link"><a href="http://github.com/josevh" data-toggle="tooltip" data-placement="bottom"
-                                        title="GitHub" target="_blank" v-html="icons.github"></a></li>
-            <li class="contact-link"><a href="https://linkedin.com/in/josevictorherrera" data-toggle="tooltip"
-                                        data-placement="bottom" title="LinkedIn" target="_blank"
+            <li class="contact-link"><a href="http://github.com/josevh" target="_blank" v-html="icons.github"></a></li>
+            <li class="contact-link"><a href="https://linkedin.com/in/josevictorherrera" target="_blank"
                                         v-html="icons.linkedIn"></a></li>
         </ul>
     </div>
