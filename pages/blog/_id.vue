@@ -22,7 +22,18 @@
                     ></div>
                 </no-ssr>
             </div>
-            <!-- TODO: next/prev posts -->
+            <!-- TODO: related posts, based on tags -->
+            <!-- TODO: tag links -->
+            <nav class="pagination" v-if="documentPrev || documentNext">
+                <div class="item prev" v-if="documentPrev">
+                    <h5>PREVIOUS</h5>
+                    <nuxt-link :to="linkResolver(documentPrev)">{{ documentPrev.data.title[0].text }}</nuxt-link>
+                </div
+                ><div class="item next" v-if="documentNext">
+                    <h5>NEXT</h5>
+                    <nuxt-link :to="linkResolver(documentNext)">{{ documentNext.data.title[0].text }}</nuxt-link>
+                </div>
+            </nav>
         </div>
     </div>
 </template>
@@ -44,6 +55,12 @@
     computed: {
       document () {
         return this.$store.getters.docByUID(this.$route.params.id)
+      },
+      documentNext() {
+        return this.$store.getters.docNext(this.document.uid, this.document.type, 'publish_date', 'asc')
+      },
+      documentPrev() {
+        return this.$store.getters.docNext(this.document.uid, this.document.type, 'publish_date', 'desc')
       },
       documentDate () {
         if (!this.document) return null
@@ -93,6 +110,35 @@
         .timestamp {
             color: #999999;
             font-family: 'Oswald', sans-serif;
+        }
+    }
+
+    .pagination {
+        margin-top: 2rem;
+        border-top: 2px solid #333333;
+
+
+        & > .item {
+            display: inline-block;
+            vertical-align: top;
+            width: 50%;
+
+            &.next {
+                float: right;
+                text-align: right;
+                padding-left: 1rem;
+            }
+
+            &.prev {
+                float: left;
+                padding-right: 1rem;
+            }
+        }
+
+        &:after {
+            content: '';
+            display: table;
+            clear: both;
         }
     }
 </style>
