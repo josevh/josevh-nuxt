@@ -9,6 +9,7 @@
                     <div class="name"><h3 v-for="(title, index) in project.data.title" :key="index">{{ title.text }}</h3></div>
                     <div class="desc rich-text"
                          v-html="prismicDom.RichText.asHtml(project.data.description, linkResolver, htmlSerializer)"></div>
+                    <div class="git-link" v-if="project.data.github_link.url"><a :href="project.data.github_link.url" :target="project.data.github_link.target">Github</a></div>
                 </li>
             </ul>
         </section>
@@ -60,7 +61,7 @@
                     margin-bottom: 0;
                 }
 
-                .desc {
+                .desc, .git-link {
                     padding-left: 1.5rem;
                 }
             }
