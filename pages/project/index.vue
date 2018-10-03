@@ -5,6 +5,7 @@
         <section class="project-listing">
             <ul class="docs">
                 <li v-for="project in projects" :key="project.id" class="doc">
+                    <!-- TODO: featured image -->
                     <div class="name"><a v-for="(title, index) in project.data.title" :key="index"
                                          :href="'/project/'+project.uid">{{ title.text }}</a>:&nbsp;
                     </div>

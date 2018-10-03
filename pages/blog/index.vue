@@ -6,6 +6,7 @@
             <ul class="docs">
                 <li v-if="!blogPosts">No blog posts.</li>
                 <li v-for="blogPost in blogPosts" :key="blogPost.id" class="doc">
+                    <!-- TODO: featured image -->
                     <span class="date">{{ blogPost.data.publish_date | docDate }}</span
                     ><span class="name"><a v-for="(title, index) in blogPost.data.title" :key="index"
                                            :href="'/blog/' + blogPost.uid">{{ title.text }}</a></span>
