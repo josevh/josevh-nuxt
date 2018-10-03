@@ -22,6 +22,11 @@
 
   export default {
     name: 'BlogIndex',
+    head () {
+      return {
+        title: 'Blog'
+      }
+    },
     data () {
       return {
         prismicDate: Date

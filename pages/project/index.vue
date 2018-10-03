@@ -24,6 +24,11 @@
 
   export default {
     name: 'ProjectIndex',
+    head () {
+      return {
+        title: 'Projects'
+      }
+    },
     data () {
       return {
         prismicDom: PrismicDom,

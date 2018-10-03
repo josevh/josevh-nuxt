@@ -31,6 +31,11 @@
 
   export default {
     name: 'ExperienceIndex',
+    head () {
+      return {
+        title: 'Experience'
+      }
+    },
     data () {
       return {
         prismicDom: PrismicDom,

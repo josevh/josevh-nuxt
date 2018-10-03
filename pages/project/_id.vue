@@ -31,6 +31,12 @@
   import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
 
   export default {
+    name: 'ProjectItem',
+    head () {
+      return {
+        title: this.document.data.title[0].text
+      }
+    },
     data () {
       return {
         prismicDom: PrismicDom,

@@ -16,6 +16,11 @@
 <script>
   export default {
     name: 'ContactIndex',
+    head () {
+      return {
+        title: 'Contact'
+      }
+    },
     data () {
       return {
         icons: {
