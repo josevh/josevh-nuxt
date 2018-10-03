@@ -44,15 +44,24 @@
     },
     computed: {
       experiences () {
+        let component = this
         let dtStrOpts = {month: 'short', year: 'numeric'}
         let docs = JSON.parse(JSON.stringify(this.$store.getters.docsByType(PrismicDocumentType)))
 
         docs.forEach(function (doc) {
-          doc.data.fromStr = new Date(doc.data.from).toLocaleDateString('en-US', dtStrOpts)
-          doc.data.toStr = !!doc.data.to ? new Date(doc.data.to).toLocaleDateString('en-US', dtStrOpts) : 'Present'
+          // TODO: fix, months are 0-indexed in JS
+
+          let fromDateParts = doc.data.from.split('-')
+          doc.data.fromStr = new Date(fromDateParts[0], +fromDateParts[1] - 1, fromDateParts[2]).toLocaleDateString('en-US', dtStrOpts)
+          if (doc.data.to) {
+            let toDateParts = doc.data.to.split('-')
+            doc.data.toStr = new Date(toDateParts[0], +toDateParts[1] - 1, toDateParts[2]).toLocaleDateString('en-US', dtStrOpts)
+          } else {
+            doc.data.toStr = 'Present'
+          }
         })
         docs.sort(function (a, b) { // desc
-          return new Date(b.data.from) - new Date(a.data.from)
+          return new Date(component.prismicDom.Date(b.data.from)) - new Date(component.prismicDom.Date(a.data.from))
         })
 
         return docs
