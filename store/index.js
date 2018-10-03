@@ -63,7 +63,7 @@ const createStore = () => {
       nuxtServerInit ({commit, state}) {
         return Prismic.getApi(state.prismicApiEndpoint)
           .then((api) => {
-            return api.query('')
+            return api.query('', {pageSize: 1e3})
           })
           .then((response) => {
             commit('setDocs', response.results)
