@@ -1,17 +1,22 @@
 <template>
     <div class="content">
         <h1>Experience</h1>
+
         <section class="experience-listing">
             <ul class="docs">
                 <li v-for="experience in experiences" :key="experience.id" class="doc">
                     <div class="position">
-                        <h4>{{ experience.data.position[0].text }}
-                            <small>{{ experience.data.employer[0].text }}</small>
-                        </h4>
+                        <h3>{{ experience.data.position[0].text }}</h3>
                     </div>
-                    <div>{{ experience.data.fromStr }} - {{ experience.data.toStr }}</div>
+                    <div class="dates">{{ experience.data.employer[0].text }} | {{ experience.data.fromStr }} - {{
+                        experience.data.toStr }}
+                    </div>
                     <div class="desc"
                          v-html="prismicDom.RichText.asHtml(experience.data.description, linkResolver)"></div>
+                    <div class="langs" v-if="experience.data.languages_used.length > 0"><span class="label">Languages used:</span>
+                        <span
+                                class="lang-str">{{ experience.data.languages_used.map(lang => {return lang.text}).join(', ') }}</span>
+                    </div>
                 </li>
             </ul>
             <!-- TODO: languages used -->
@@ -52,6 +57,7 @@
 </script>
 
 <style lang="scss" scoped>
+    /* TODO: import a global scss for vars */
     .content {
         & > h2 {
             margin: 1.5rem 0;
@@ -65,7 +71,7 @@
                 margin-bottom: 1.5rem;
 
                 .position {
-                    h4 {
+                    h3 {
                         margin-bottom: 0;
 
                         small {
@@ -74,7 +80,40 @@
                         }
                     }
                 }
+
+                .dates {
+                    font-family: 'Oswald', sans-serif;
+                }
+
+                .desc {
+                    margin-top: 0.25rem;
+                }
+
+                .langs {
+                    .label {
+                        font-family: 'Oswald', sans-serif;
+                    }
+
+                    .lang-str {
+                        font-family: 'Inconsolata', monospace;
+                    }
+                }
             }
+        }
+    }
+</style>
+
+<style lang="scss">
+    .content .docs .doc .desc ul {
+        list-style-type: none;
+
+        li:before {
+            content: '•';
+            font-size: 1.5rem;
+            display: inline-block;
+            vertical-align: middle;
+            width: 1em;
+            margin-left: -1em;
         }
     }
 </style>
