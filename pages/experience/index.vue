@@ -19,7 +19,6 @@
 </template>
 
 <script>
-  const Prismic = require('prismic-javascript')
   const PrismicDom = require('prismic-dom')
   const PrismicDocumentType = 'experience'
   import LinkResolver from '~~/LinkResolver'
@@ -28,7 +27,6 @@
     name: 'ExperienceIndex',
     data () {
       return {
-        documents: [],
         prismicDom: PrismicDom,
         linkResolver: LinkResolver
       }
@@ -36,7 +34,7 @@
     computed: {
       experiences () {
         let dtStrOpts = {month: 'short', year: 'numeric'}
-        let docs = JSON.parse(JSON.stringify(this.documents))
+        let docs = JSON.parse(JSON.stringify(this.$store.getters.docsByType(PrismicDocumentType)))
 
         docs.forEach(function (doc) {
           doc.data.fromStr = new Date(doc.data.from).toLocaleDateString('en-US', dtStrOpts)
@@ -48,17 +46,6 @@
 
         return docs
       }
-    },
-    asyncData ({store}) {
-      return Prismic.getApi(store.state.prismicApiEndpoint)
-        .then((api) => {
-          return api.query(
-            Prismic.Predicates.at('document.type', PrismicDocumentType)
-          )
-        })
-        .then((response) => {
-          return {documents: response.results}
-        })
     }
   }
 </script>

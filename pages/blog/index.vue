@@ -16,7 +16,6 @@
 </template>
 
 <script>
-  const Prismic = require('prismic-javascript')
   const PrismicDocumentType = 'blog_post'
   import { Date } from 'prismic-dom'
 
@@ -24,14 +23,13 @@
     name: 'BlogIndex',
     data () {
       return {
-        documents: [],
         prismicDate: Date
       }
     },
     computed: {
       blogPosts () {
         let component = this
-        return this.documents
+        return this.$store.getters.docsByType(PrismicDocumentType)
           .slice()
           .sort(function (a, b) {
             // desc
@@ -43,21 +41,11 @@
       docDate: function (val) {
         if (!val) return ''
         let dt = Date(val)
+        
         return dt.toLocaleString('en-US', {
           year: 'numeric', month: 'short', day: 'numeric'
         })
       }
-    },
-    asyncData ({store}) {
-      return Prismic.getApi(store.state.prismicApiEndpoint)
-        .then((api) => {
-          return api.query(
-            Prismic.Predicates.at('document.type', PrismicDocumentType)
-          )
-        })
-        .then((response) => {
-          return {documents: response.results}
-        })
     }
   }
 </script>

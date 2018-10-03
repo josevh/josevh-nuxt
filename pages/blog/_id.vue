@@ -1,14 +1,14 @@
 <template>
     <div class="content" v-cloak>
-        <div class="empty" v-if="!document">Unable to locate requested project.</div>
-        <div v-else>
-            <h2 class="title">{{document.title[0].text}}</h2>
+        <div v-if="!document" class="empty">Unable to locate requested project.</div>
+        <div v-if="typeof document !== 'undefined'">
+            <h2 class="title">{{document.data.title[0].text}}</h2>
             <!-- TODO: featured image -->
             <div v-if="documentDateStr" class="timestamp">
                 <small>{{ documentDateStr }}</small>
             </div>
             <div class="rich-text"
-                 v-html="prismicDom.RichText.asHtml(document.content, linkResolver, htmlSerializer)"></div>
+                 v-html="prismicDom.RichText.asHtml(document.data.content, linkResolver, htmlSerializer)"></div>
             <div class="image-gallery" v-if="documentImageGalleryImages.length > 0">
                 <no-ssr placeholder="Loading...">
                     <gallery :images="documentImageGalleryImages"
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-  const Prismic = require('prismic-javascript')
   const PrismicDom = require('prismic-dom')
   import LinkResolver from '~~/LinkResolver'
   import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
@@ -36,7 +35,6 @@
   export default {
     data () {
       return {
-        document: null,
         prismicDom: PrismicDom,
         linkResolver: LinkResolver,
         imageGalleryIndex: null
@@ -44,10 +42,13 @@
     },
     mixins: [htmlSerializer],
     computed: {
+      document () {
+        return this.$store.getters.docByUID(this.$route.params.id)
+      },
       documentDate () {
         if (!this.document) return null
 
-        return this.prismicDom.Date(this.document.publish_date)
+        return this.prismicDom.Date(this.document.data.publish_date)
       },
       documentDateStr () {
         if (!this.documentDate) return ''
@@ -58,9 +59,9 @@
         })
       },
       documentImageGalleryImages () {
-        if (!this.document.image_gallery || !Array.isArray(this.document.image_gallery)) return []
+        if (!this.document || !this.document.data.image_gallery || !Array.isArray(this.document.data.image_gallery)) return []
 
-        return this.document.image_gallery
+        return this.document.data.image_gallery
           .filter(function (item) {
             return typeof item.image_gallery_item_image === 'object'
               && typeof item.image_gallery_item_image.url === 'string'
@@ -68,29 +69,15 @@
           })
           .map(function (item) {
             return {
-              title: item.image_gallery_item_caption[0].text,
+              title: item.image_gallery_item_caption.length > 0 ? item.image_gallery_item_caption[0].text : '',
               href: item.image_gallery_item_image.url
             }
           })
       }
     },
     methods: {
-      onImageGalleryOpen () {
-        // override 'X' for '×'
+      onImageGalleryOpen (event) { // override 'X' for '×'
         this.$refs.imageGalleryWrap.$el.querySelector('.close').innerHTML = '×'
-      }
-    },
-    asyncData ({params, error, payload, store}) {
-      if (payload) {
-        return {document: payload}
-      } else {
-        return Prismic.getApi(store.state.prismicApiEndpoint)
-          .then((api) => {
-            return api.getByUID('blog_post', params.id)
-          })
-          .then((response) => {
-            return {document: response.data}
-          })
       }
     }
   }

@@ -15,36 +15,19 @@
 </template>
 
 <script>
-  const Prismic = require('prismic-javascript')
   const PrismicDocumentType = 'project'
 
   export default {
     name: 'ProjectIndex',
-    data () {
-      return {
-        documents: []
-      }
-    },
     computed: {
       projects () {
-        return this.documents
+        return this.$store.getters.docsByType(PrismicDocumentType)
           .slice()
           .sort(function (a, b) {
             // desc
             return new Date(b.first_publication_date) - new Date(a.first_publication_date)
           })
       }
-    },
-    asyncData ({store}) {
-      return Prismic.getApi(store.state.prismicApiEndpoint)
-        .then((api) => {
-          return api.query(
-            Prismic.Predicates.at('document.type', PrismicDocumentType)
-          )
-        })
-        .then((response) => {
-          return {documents: response.results}
-        })
     }
   }
 </script>
