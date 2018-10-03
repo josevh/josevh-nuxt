@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b31b5b7a-e563-4349-9699-817f8eacd06f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +29,7 @@
           <entry key="gitignore" value="2" />
           <entry key="ico" value="1" />
           <entry key="jpg" value="5" />
-          <entry key="js" value="36" />
+          <entry key="js" value="37" />
           <entry key="json" value="8" />
           <entry key="md" value="10" />
           <entry key="nvmrc" value="1" />
@@ -42,7 +41,7 @@
         <counts>
           <entry key="Image" value="9" />
           <entry key="JSON" value="8" />
-          <entry key="JavaScript" value="36" />
+          <entry key="JavaScript" value="37" />
           <entry key="Markdown" value="10" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Vue.js" value="126" />
@@ -56,7 +55,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="7" />
-          <entry key="js" value="2852" />
+          <entry key="js" value="2855" />
           <entry key="json" value="82" />
           <entry key="nvmrc" value="12" />
           <entry key="vue" value="16672" />
@@ -65,7 +64,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="82" />
-          <entry key="JavaScript" value="2852" />
+          <entry key="JavaScript" value="2855" />
           <entry key="PLAIN_TEXT" value="19" />
           <entry key="Vue.js" value="16672" />
         </counts>
@@ -322,12 +321,12 @@
       <workItem from="1538487459081" duration="9412000" />
       <workItem from="1538499809630" duration="12443000" />
       <workItem from="1538573646884" duration="17131000" />
-      <workItem from="1538594420848" duration="231000" />
+      <workItem from="1538594420848" duration="289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95703000" />
+    <option name="totallyTimeSpent" value="95761000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -345,7 +344,7 @@
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="3" weight="0.2046332" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2046332" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294509" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3294509" />
