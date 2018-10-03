@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <h2>Blog</h2>
+        <h1>Blog</h1>
 
         <section class="blog-listing">
             <ul class="docs">
@@ -41,7 +41,7 @@
       docDate: function (val) {
         if (!val) return ''
         let dt = Date(val)
-        
+
         return dt.toLocaleString('en-US', {
           year: 'numeric', month: 'short', day: 'numeric'
         })

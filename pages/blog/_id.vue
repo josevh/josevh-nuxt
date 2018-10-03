@@ -2,7 +2,7 @@
     <div class="content" v-cloak>
         <div v-if="!document" class="empty">Unable to locate requested project.</div>
         <div v-if="typeof document !== 'undefined'">
-            <h2 class="title">{{document.data.title[0].text}}</h2>
+            <h1 class="title">{{document.data.title[0].text}}</h1>
             <!-- TODO: featured image -->
             <div v-if="documentDateStr" class="timestamp">
                 <small>{{ documentDateStr }}</small>

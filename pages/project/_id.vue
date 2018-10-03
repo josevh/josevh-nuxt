@@ -2,7 +2,8 @@
     <div class="content">
         <div class="empty" v-if="!document">Unable to locate requested project.</div>
         <div v-else>
-            <h2 class="title">{{document.data.title[0].text}}</h2>
+            <h1 class="title">{{document.data.title[0].text}}</h1>
+
             <div class="rich-text"
                  v-html="prismicDom.RichText.asHtml(document.data.description, linkResolver, htmlSerializer)"></div>
             <div class="image-gallery" v-if="documentImageGalleryImages.length > 0">

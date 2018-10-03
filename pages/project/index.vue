@@ -1,6 +1,7 @@
 <template>
     <div class="content">
-        <h2>Projects</h2>
+        <h1>Projects</h1>
+
         <section class="project-listing">
             <ul class="docs">
                 <li v-for="project in projects" :key="project.id" class="doc">
