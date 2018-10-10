@@ -14,8 +14,8 @@
                     <silentbox-group>
                         <silentbox-item v-for="(image, index) in documentImageGalleryImages" :key="index"
                                         :src="image.href"
+                                        :style="'background-image: url(\''+image.href+'\')'"
                                         :description="image.title">
-                            <img v-show="index === 0" :src="image.href" :alt="image.title">
                         </silentbox-item>
                     </silentbox-group>
                 </no-ssr>
@@ -158,24 +158,24 @@
         font-family: 'Oswald', sans-serif;
 
         .silentbox-item:first-of-type {
-            img {
-                margin: 0 auto;
-                width: 300px;
-                height: 200px;
-                border: 1px solid #333;
-                box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
-                transition: box-shadow 250ms, border-width 125ms;
-                background-clip: padding-box;
+            width: 300px;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
 
-                @media screen and (max-width: 414px) {
-                    width: 100%;
-                }
+            border: 1px solid #333;
+            box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
+            transition: box-shadow 250ms, border-width 125ms;
+            background-clip: padding-box;
 
-                &:hover {
-                    cursor: pointer;
-                    box-shadow: none;
-                    border-width: 3px;
-                }
+            @media screen and (max-width: 414px) {
+                width: 100%;
+            }
+
+            &:hover {
+                cursor: pointer;
+                box-shadow: none;
+                border-width: 3px;
             }
         }
 
