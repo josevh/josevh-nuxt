@@ -167,11 +167,24 @@
                 transition: box-shadow 250ms, border-width 125ms;
                 background-clip: padding-box;
 
+                @media screen and (max-width: 414px) {
+                    width: 100%;
+                }
+
                 &:hover {
                     cursor: pointer;
                     box-shadow: none;
                     border-width: 3px;
                 }
+            }
+        }
+
+        #silentbox-overlay__embed img {
+            @media screen and (max-width: 500px) {
+                max-width: 95%;
+            }
+            @media screen and (max-width: 414px) {
+                max-width: 90%;
             }
         }
     }
