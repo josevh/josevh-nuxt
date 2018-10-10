@@ -73,7 +73,7 @@ module.exports = {
     }]
   ],
   plugins: [
-    { src: '~/plugins/vue-image-gallery', ssr: false }
+    { src: '~/plugins/vue-silentbox', ssr: false }
   ]
 }
 

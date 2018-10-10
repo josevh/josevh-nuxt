@@ -11,15 +11,13 @@
                  v-html="prismicDom.RichText.asHtml(document.data.content, linkResolver, htmlSerializer)"></div>
             <div class="image-gallery" v-if="documentImageGalleryImages.length > 0">
                 <no-ssr placeholder="Loading...">
-                    <gallery :images="documentImageGalleryImages"
-                             :index="imageGalleryIndex"
-                             ref="imageGalleryWrap"
-                             @onopen="onImageGalleryOpen"
-                             @close="imageGalleryIndex = null"></gallery>
-                    <div class="thumbnail"
-                         @click="imageGalleryIndex = 0"
-                         :style="{ backgroundImage: 'url(' + documentImageGalleryImages[0].href + ')' }"
-                    ></div>
+                    <silentbox-group>
+                        <silentbox-item v-for="(image, index) in documentImageGalleryImages" :key="index"
+                                        :src="image.href"
+                                        :description="image.title">
+                            <img v-show="index === 0" :src="image.href" :alt="image.title">
+                        </silentbox-item>
+                    </silentbox-group>
                 </no-ssr>
             </div>
             <!-- TODO: related posts, based on tags -->
@@ -99,11 +97,6 @@
             }
           })
       }
-    },
-    methods: {
-      onImageGalleryOpen (event) { // override 'X' for '×'
-        this.$refs.imageGalleryWrap.$el.querySelector('.close').innerHTML = '×'
-      }
     }
   }
 </script>
@@ -161,23 +154,24 @@
     }
 
     .image-gallery {
-        .blueimp-gallery a.close {
-            font-family: sans-serif;
-            border-bottom: none;
-        }
-        .thumbnail {
-            margin: 0 auto;
-            width: 300px;
-            height: 200px;
-            border: 1px solid #333;
-            box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
-            transition: box-shadow 250ms, border-width 125ms;
-            background-clip: padding-box;
+        text-align: center;
+        font-family: 'Oswald', sans-serif;
 
-            &:hover {
-                cursor: pointer;
-                box-shadow: none;
-                border-width: 3px;
+        .silentbox-item:first-of-type {
+            img {
+                margin: 0 auto;
+                width: 300px;
+                height: 200px;
+                border: 1px solid #333;
+                box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
+                transition: box-shadow 250ms, border-width 125ms;
+                background-clip: padding-box;
+
+                &:hover {
+                    cursor: pointer;
+                    box-shadow: none;
+                    border-width: 3px;
+                }
             }
         }
     }
