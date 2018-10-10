@@ -167,6 +167,7 @@
             box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
             transition: box-shadow 250ms, border-width 125ms;
             background-clip: padding-box;
+            background-size: cover;
 
             @media screen and (max-width: 414px) {
                 width: 100%;
