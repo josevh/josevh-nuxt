@@ -7,7 +7,13 @@ module.exports = {
   ** Headers of the page
   */
   head: {
+    htmlAttrs: {
+      lang: 'en'
+    },
     title: 'Jose V Herrera',
+    titleTemplate: (titleChunk) => {
+      return titleChunk ? `Jose V Herrera - ${titleChunk}` : 'Jose V Herrera';
+    },
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},

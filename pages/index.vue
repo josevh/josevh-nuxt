@@ -21,6 +21,12 @@
 
 <script>
   export default {
+    name: 'Home',
+    head () {
+      return {
+        title: ''
+      }
+    },
     data () {
       return {
         documents: []
