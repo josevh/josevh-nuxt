@@ -39,6 +39,8 @@
 
         img.avatar {
             border-radius: 50%;
+            max-width: 150px;
+            max-height: 150px;
         }
 
         ul.contact-links {
