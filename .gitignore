@@ -1,9 +1,11 @@
+# IDEA
+.idea
+
 # Nuxt build
 .nuxt
 
 # Nuxt generate
 dist
-
 
 # Created by https://www.gitignore.io/api/node,phpstorm
 
