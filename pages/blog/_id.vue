@@ -145,6 +145,28 @@
                 &:nth-of-type(3) {
                     padding-left: 1rem;
                 }
+
+                @media screen and (max-width: 768px){
+                    display: block;
+                    width: 100%;
+                    padding: 0;
+
+                    &+.item {
+                        margin-top: 1rem;
+                    }
+
+                    &:nth-of-type(1) {
+                        padding-right: 0;
+                    }
+
+                    &:nth-of-type(2) {
+                        padding: 0 0;
+                    }
+
+                    &:nth-of-type(3) {
+                        padding-left: 0;
+                    }
+                }
             }
         }
 
