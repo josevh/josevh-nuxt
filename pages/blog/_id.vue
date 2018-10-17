@@ -20,7 +20,7 @@
                     </silentbox-group>
                 </no-ssr>
             </div>
-            <div class="links-section related">
+            <div class="links-section related" v-if="docsRelated.length">
                 <h5>RELATED</h5>
                 <div v-for="docRelated in docsRelated" :key="docRelated.id" class="item">
                     <nuxt-link :to="linkResolver(docRelated)">{{ docRelated.data.title[0].text }}</nuxt-link>
