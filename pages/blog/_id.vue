@@ -20,9 +20,13 @@
                     </silentbox-group>
                 </no-ssr>
             </div>
-            <!-- TODO: related posts, based on tags -->
-            <!-- TODO: tag links -->
-            <nav class="pagination" v-if="documentPrev || documentNext">
+            <div class="links-section related">
+                <h5>RELATED</h5>
+                <div v-for="docRelated in docsRelated" :key="docRelated.id" class="item">
+                    <nuxt-link :to="linkResolver(docRelated)">{{ docRelated.data.title[0].text }}</nuxt-link>
+                </div>
+            </div>
+            <nav class="links-section pagination" v-if="documentPrev || documentNext">
                 <div class="item prev" v-if="documentPrev">
                     <h5>PREVIOUS</h5>
                     <nuxt-link :to="linkResolver(documentPrev)">{{ documentPrev.data.title[0].text }}</nuxt-link>
@@ -96,6 +100,9 @@
               href: item.image_gallery_item_image.url
             }
           })
+      },
+      docsRelated () {
+        return this.$store.getters.docsRelated(this.document).slice(0, 3)
       }
     }
   }
@@ -114,34 +121,62 @@
         }
     }
 
-    .pagination {
+    .links-section {
         margin-top: 2rem;
         border-top: 2px solid #333333;
 
+        &.related {
+            border-top-color: #dddddd;
+            border-top-width: 1px;
 
-        & > .item {
-            display: inline-block;
-            vertical-align: top;
-            width: 50%;
+            & > .item {
+                display: inline-block;
+                vertical-align: top;
+                width: 33.33%;
 
-            &.next {
-                float: right;
-                text-align: right;
-                padding-left: 1rem;
-            }
+                &:nth-of-type(1) {
+                    padding-right: 1rem;
+                }
 
-            &.prev {
-                float: left;
-                padding-right: 1rem;
+                &:nth-of-type(2) {
+                    padding: 0 1rem;
+                }
+
+                &:nth-of-type(3) {
+                    padding-left: 1rem;
+                }
             }
         }
 
-        &:after {
-            content: '';
-            display: table;
-            clear: both;
+        &.pagination {
+            margin-top: 2rem;
+            border-top: 2px solid #333333;
+
+            & > .item {
+                display: inline-block;
+                vertical-align: top;
+                width: 50%;
+
+                &.next {
+                    float: right;
+                    text-align: right;
+                    padding-left: 1rem;
+                }
+
+                &.prev {
+                    float: left;
+                    padding-right: 1rem;
+                }
+            }
+
+            &:after {
+                content: '';
+                display: table;
+                clear: both;
+            }
         }
     }
+
 </style>
 <style lang="scss">
     .content .block-img {
