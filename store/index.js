@@ -56,7 +56,7 @@ const createStore = () => {
       docsRelated: (state, getters) => (doc) => {
         if (doc.tags.length === 0) return []
 
-        let docsRelated = [];
+        let docsRelated = []
 
         getters.docsByType(doc.type).forEach(d => {
           if (d.id !== doc.id) {
@@ -78,17 +78,37 @@ const createStore = () => {
     mutations: {
       setDocs (state, newDocs) {
         state.docs = newDocs
+      },
+      addDocs (state, newDocs) {
+        state.docs.push(...newDocs)
       }
     },
     actions: {
-      nuxtServerInit ({commit, state}) {
-        return Prismic.getApi(state.prismicApiEndpoint)
-          .then((api) => {
-            return api.query('', {pageSize: 100})
-          })
-          .then((response) => {
-            commit('setDocs', response.results)
-          })
+      async nuxtServerInit ({commit, state}) {
+        const api = await Prismic.getApi(state.prismicApiEndpoint)
+
+        let responseBlogPosts = await api.query(
+          Prismic.Predicates.at('document.type', 'blog_post'),
+          {pageSize: 100}
+        )
+        let responseProjects = await api.query(
+          Prismic.Predicates.at('document.type', 'project'),
+          {pageSize: 100}
+        )
+        let responseExperience = await api.query(
+          Prismic.Predicates.at('document.type', 'experience'),
+          {pageSize: 100}
+        )
+
+        commit('addDocs', responseBlogPosts.results)
+        commit('addDocs', responseProjects.results)
+        commit('addDocs', responseExperience.results)
+
+        return {
+          responseBlogPosts: responseBlogPosts,
+          responseProjects: responseProjects,
+          responseExperience: responseExperience,
+        }
       }
     }
   })
