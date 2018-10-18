@@ -21,12 +21,8 @@ const createStore = () => {
 
         return types
       },
-      docsByType: (state) => (type) => {
-        return state.docs.filter(doc => doc.type === type)
-      },
-      docByUID: (state) => (uid) => {
-        return state.docs.find(doc => doc.uid === uid)
-      },
+      docsByType: (state) => (type) => state.docs.filter(doc => doc.type === type),
+      docByUID: (state) => (uid) => state.docs.find(doc => doc.uid === uid),
       docNext: (state, getters) => (uid, type, sortProp, sortDirection = 'asc') => {
         let allowedSortDirections = ['asc', 'desc']
         if (allowedSortDirections.indexOf(sortDirection) === -1) {
@@ -60,9 +56,10 @@ const createStore = () => {
 
         getters.docsByType(doc.type).forEach(d => {
           if (d.id !== doc.id) {
-            let tagsInCommonCount = d.tags.reduce((accumulator, tag) => {
-              return accumulator + (doc.tags.indexOf(tag) >= 0 ? 1 : 0)
-            }, 0)
+            let tagsInCommonCount = d.tags.reduce(
+              (accumulator, tag) => accumulator + (doc.tags.indexOf(tag) >= 0 ? 1 : 0),
+              0
+            )
             if (tagsInCommonCount > 0) {
               d.tagsInCommonCount = tagsInCommonCount
               docsRelated.push(d)
@@ -70,9 +67,7 @@ const createStore = () => {
           }
         })
 
-        return docsRelated.sort((a, b) => {
-          return b.tagsInCommonCount - a.tagsInCommonCount // desc order
-        })
+        return docsRelated.sort((a, b) => b.tagsInCommonCount - a.tagsInCommonCount) // desc order
       }
     },
     mutations: {
