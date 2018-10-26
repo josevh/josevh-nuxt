@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <h1>Blog</h1>
+        <h1 class="title">Blog</h1>
 
         <section class="blog-listing">
             <ul class="docs">
@@ -62,6 +62,10 @@
     $breakpoint: 768px;
 
     .content {
+        .title {
+            margin-bottom: 1.5rem;
+        }
+
         & > h2 {
             margin: 1.5rem 0;
         }

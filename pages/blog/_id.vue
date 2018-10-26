@@ -2,12 +2,14 @@
     <div class="content" v-cloak>
         <div v-if="!document" class="empty">Unable to locate requested project.</div>
         <div v-if="typeof document !== 'undefined'">
-            <h1 class="title">{{document.data.title[0].text}}</h1>
-            <!-- TODO: featured image -->
-            <div v-if="documentDateStr" class="timestamp">
-                <small>{{ documentDateStr }}</small>
+            <div class="heading">
+                <h1 class="title">{{document.data.title[0].text}}</h1>
+                <!-- TODO: featured image -->
+                <div v-if="documentDateStr" class="timestamp">
+                    <small>{{ documentDateStr }}</small>
+                </div>
             </div>
-            <div class="rich-text"
+            <div class="rich-text body"
                  v-html="prismicDom.RichText.asHtml(document.data.content, linkResolver, htmlSerializer)"></div>
             <div class="image-gallery" v-if="documentImageGalleryImages.length > 0">
                 <no-ssr placeholder="Loading...">
@@ -44,8 +46,6 @@
   const PrismicDom = require('prismic-dom')
   import LinkResolver from '~~/LinkResolver'
   import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
-
-  // TODO: fix date
 
   export default {
     name: 'BlogPostItem',
@@ -112,14 +112,17 @@
     @import '~assets/variables';
 
     .content {
-        .title {
-            margin-top: 1.5rem;
-            margin-bottom: 0;
-        }
+        .heading {
+            margin-bottom: 1.5rem;
 
-        .timestamp {
-            color: $light-color;
-            font-family: $fonts-sans-serif;
+            .title {
+                margin-bottom: 0;
+            }
+
+            .timestamp {
+                color: $light-color;
+                font-family: $fonts-sans-serif;
+            }
         }
     }
 

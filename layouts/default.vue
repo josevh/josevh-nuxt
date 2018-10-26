@@ -47,9 +47,11 @@
 
         h1, h2, h3, h4, h5, h6 {
             font-family: $fonts-sans-serif;
-            line-height: 1.5em;
+            line-height: 1.2;
             color: #333333;
             letter-spacing: -1px;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
         }
 
         h1 {

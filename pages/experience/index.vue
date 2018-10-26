@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <h1>Experience</h1>
+        <h1 class="title">Experience</h1>
 
         <section class="experience-listing">
             <ul class="docs">
@@ -70,6 +70,10 @@
     @import '~assets/variables';
 
     .content {
+        .title {
+            margin-bottom: 1.5rem;
+        }
+
         & > h2 {
             margin: 1.5rem 0;
         }
