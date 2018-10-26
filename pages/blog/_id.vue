@@ -2,12 +2,14 @@
     <div class="content" v-cloak>
         <div v-if="!document" class="empty">Unable to locate requested project.</div>
         <div v-if="typeof document !== 'undefined'">
-            <h1 class="title">{{document.data.title[0].text}}</h1>
-            <!-- TODO: featured image -->
-            <div v-if="documentDateStr" class="timestamp">
-                <small>{{ documentDateStr }}</small>
+            <div class="heading">
+                <h1 class="title">{{document.data.title[0].text}}</h1>
+                <!-- TODO: featured image -->
+                <div v-if="documentDateStr" class="timestamp">
+                    <small>{{ documentDateStr }}</small>
+                </div>
             </div>
-            <div class="rich-text"
+            <div class="rich-text body"
                  v-html="prismicDom.RichText.asHtml(document.data.content, linkResolver, htmlSerializer)"></div>
             <div class="image-gallery" v-if="documentImageGalleryImages.length > 0">
                 <no-ssr placeholder="Loading...">
@@ -45,8 +47,6 @@
   import LinkResolver from '~~/LinkResolver'
   import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
 
-  // TODO: fix date
-
   export default {
     name: 'BlogPostItem',
     head () {
@@ -75,7 +75,7 @@
       documentDate () {
         if (!this.document) return null
 
-        return this.prismicDom.Date(this.document.data.publish_date)
+        return new Date(this.document.data.publish_date + 'T00:00:00')
       },
       documentDateStr () {
         if (!this.documentDate) return ''
@@ -109,15 +109,20 @@
 </script>
 
 <style lang="scss" scoped>
-    .content {
-        .title {
-            margin-top: 1.5rem;
-            margin-bottom: 0;
-        }
+    @import '~assets/variables';
 
-        .timestamp {
-            color: #999999;
-            font-family: 'Oswald', sans-serif;
+    .content {
+        .heading {
+            margin-bottom: 1.5rem;
+
+            .title {
+                margin-bottom: 0;
+            }
+
+            .timestamp {
+                color: $light-color;
+                font-family: $fonts-sans-serif;
+            }
         }
     }
 
@@ -201,6 +206,8 @@
 
 </style>
 <style lang="scss">
+    @import '~assets/variables';
+
     .content .block-img {
         text-align: center;
 
@@ -212,7 +219,7 @@
 
     .image-gallery {
         text-align: center;
-        font-family: 'Oswald', sans-serif;
+        font-family: $fonts-sans-serif;
 
         .silentbox-item:first-of-type {
             width: 300px;
@@ -220,8 +227,8 @@
             display: block;
             margin: 0 auto;
 
-            border: 1px solid #333;
-            box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
+            border: 1px solid #333333;
+            box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #cccccc;
             transition: box-shadow 250ms, border-width 125ms;
             background-clip: padding-box;
             background-size: cover;

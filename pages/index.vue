@@ -51,7 +51,7 @@
 
     .content {
         .headline h1 {
-            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
         }
 
         section.message {

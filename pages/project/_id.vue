@@ -3,7 +3,7 @@
         <div class="empty" v-if="!document">Unable to locate requested project.</div>
         <div v-else>
             <h1 class="title">{{document.data.title[0].text}}</h1>
-
+            <!-- TODO: featured image -->
             <div class="rich-text"
                  v-html="prismicDom.RichText.asHtml(document.data.description, linkResolver, htmlSerializer)"></div>
             <div class="image-gallery" v-if="documentImageGalleryImages.length > 0">
@@ -72,9 +72,11 @@
     }
 </style>
 <style lang="scss">
+    @import '~assets/variables';
+
     .image-gallery {
         text-align: center;
-        font-family: 'Oswald', sans-serif;
+        font-family: $fonts-sans-serif;
 
         .silentbox-item:first-of-type {
             width: 300px;

@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <h1>Projects</h1>
+        <h1 class="title">Projects</h1>
 
         <section class="project-listing">
             <ul class="docs">
@@ -51,6 +51,10 @@
 
 <style lang="scss" scoped>
     .content {
+        .title {
+            margin-bottom: 1.5rem;
+        }
+
         & > h2 {
             margin: 1.5rem 0;
         }

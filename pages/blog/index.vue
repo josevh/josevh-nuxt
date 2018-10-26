@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <h1>Blog</h1>
+        <h1 class="title">Blog</h1>
 
         <section class="blog-listing">
             <ul class="docs">
@@ -19,8 +19,6 @@
 <script>
   const PrismicDocumentType = 'blog_post'
   import { Date } from 'prismic-dom'
-
-  // TODO: fix dates
 
   export default {
     name: 'BlogIndex',
@@ -41,14 +39,14 @@
           .slice()
           .sort(function (a, b) {
             // desc
-            return component.prismicDate(b.data.publish_date) - component.prismicDate(a.data.publish_date)
+            return new Date(b.data.publish_date + 'T00:00:00') - new Date(a.data.publish_date + 'T00:00:00')
           })
       }
     },
     filters: {
       docDate: function (val) {
         if (!val) return ''
-        let dt = Date(val)
+        let dt = Date(val + 'T00:00:00')
 
         return dt.toLocaleString('en-US', {
           year: 'numeric', month: 'short', day: 'numeric'
@@ -62,6 +60,10 @@
     $breakpoint: 768px;
 
     .content {
+        .title {
+            margin-bottom: 1.5rem;
+        }
+
         & > h2 {
             margin: 1.5rem 0;
         }
