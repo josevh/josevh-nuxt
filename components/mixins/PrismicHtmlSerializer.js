@@ -9,7 +9,7 @@ export const htmlSerializer = {
         case Elements.preformatted:
           // prep preformatted text for highlighting
           // @link https://prismic.io/docs/javascript/templating/rich-text
-          return `<p><pre><code class="hljs">${highlightAuto(element.text).value}</code></pre></p>`
+          return `<pre><code class="hljs">${highlightAuto(element.text).value}</code></pre>`
         default:
           return null
       }
