@@ -17,8 +17,10 @@
 </script>
 
 <style lang="scss">
+    @import '~assets/variables';
+
     html {
-        font-size: 16px;
+        font-size: $base-font-size;
         line-height: 1.5rem;
         word-spacing: 1px;
         -ms-text-size-adjust: 100%;
@@ -32,11 +34,11 @@
             max-width: 42rem;
             padding: 0 2rem;
             background-color: #F8F8F8;
-            color: #666666;
+            color: $primary-color;
             font-weight: 400;
             font-size: 16px;
             margin: 4rem auto;
-            font-family: 'Merriweather', serif;
+            font-family: $fonts-serif;
 
             @media screen and (max-width: 768px) {
                 margin: 2rem auto;
@@ -44,7 +46,7 @@
         }
 
         h1, h2, h3, h4, h5 {
-            font-family: 'Oswald', sans-serif;
+            font-family: $fonts-sans-serif;
             line-height: 1.5em;
             color: #333333;
             letter-spacing: -1px;
@@ -68,8 +70,8 @@
     }
 
     a {
-        color: #444444;
-        border-bottom: 1px dotted #444444;
+        color: $link-color;
+        border-bottom: 1px dotted $link-color;
         text-decoration: none;
 
         &:hover {
@@ -80,7 +82,7 @@
     }
 
     pre, code {
-        font-family: 'Inconsolata', monospace;
+        font-family: $fonts-monospace;
     }
 
 </style>

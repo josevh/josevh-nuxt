@@ -11,12 +11,14 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '~assets/variables';
+
     footer {
         margin-top: 3rem;
 
         .copyright {
-            color: #999999;
-            font-family: 'Oswald', sans-serif;
+            color: $light-color;
+            font-family: $fonts-sans-serif;
             font-size: 0.8125rem;
         }
     }

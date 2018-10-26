@@ -109,6 +109,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '~assets/variables';
+
     .content {
         .title {
             margin-top: 1.5rem;
@@ -116,8 +118,8 @@
         }
 
         .timestamp {
-            color: #999999;
-            font-family: 'Oswald', sans-serif;
+            color: $light-color;
+            font-family: $fonts-sans-serif;
         }
     }
 
@@ -201,6 +203,8 @@
 
 </style>
 <style lang="scss">
+    @import '~assets/variables';
+
     .content .block-img {
         text-align: center;
 
@@ -212,7 +216,7 @@
 
     .image-gallery {
         text-align: center;
-        font-family: 'Oswald', sans-serif;
+        font-family: $fonts-sans-serif;
 
         .silentbox-item:first-of-type {
             width: 300px;
@@ -220,8 +224,8 @@
             display: block;
             margin: 0 auto;
 
-            border: 1px solid #333;
-            box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #ccc;
+            border: 1px solid #333333;
+            box-shadow: 10px 8px 1px 1px #b1b1b1, 18px 14px 1px 3px #cccccc;
             transition: box-shadow 250ms, border-width 125ms;
             background-clip: padding-box;
             background-size: cover;

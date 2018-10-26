@@ -26,6 +26,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '~assets/variables';
+
     $breakpoint: 420px;
 
     header {
@@ -37,7 +39,7 @@
     }
 
     nav {
-        font-family: 'Oswald', sans-serif;
+        font-family: $fonts-sans-serif;
         overflow: hidden;
 
         a.brand {

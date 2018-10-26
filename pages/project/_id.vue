@@ -72,9 +72,11 @@
     }
 </style>
 <style lang="scss">
+    @import '~assets/variables';
+
     .image-gallery {
         text-align: center;
-        font-family: 'Oswald', sans-serif;
+        font-family: $fonts-sans-serif;
 
         .silentbox-item:first-of-type {
             width: 300px;

@@ -67,7 +67,8 @@
 </script>
 
 <style lang="scss" scoped>
-    /* TODO: import a global scss for vars */
+    @import '~assets/variables';
+
     .content {
         & > h2 {
             margin: 1.5rem 0;
@@ -86,13 +87,13 @@
 
                         small {
                             font-weight: 400;
-                            color: #666666;
+                            color: $primary-color;
                         }
                     }
                 }
 
                 .dates {
-                    font-family: 'Oswald', sans-serif;
+                    font-family: $fonts-sans-serif;
                 }
 
                 .desc {
@@ -101,11 +102,11 @@
 
                 .langs {
                     .label {
-                        font-family: 'Oswald', sans-serif;
+                        font-family: $fonts-serif;
                     }
 
                     .lang-str {
-                        font-family: 'Inconsolata', monospace;
+                        font-family: $fonts-monospace;
                     }
                 }
             }
