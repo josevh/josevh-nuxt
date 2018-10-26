@@ -41,14 +41,14 @@
           .slice()
           .sort(function (a, b) {
             // desc
-            return component.prismicDate(b.data.publish_date) - component.prismicDate(a.data.publish_date)
+            return new Date(b.data.publish_date + 'T00:00:00') - new Date(a.data.publish_date + 'T00:00:00')
           })
       }
     },
     filters: {
       docDate: function (val) {
         if (!val) return ''
-        let dt = Date(val)
+        let dt = Date(val + 'T00:00:00')
 
         return dt.toLocaleString('en-US', {
           year: 'numeric', month: 'short', day: 'numeric'

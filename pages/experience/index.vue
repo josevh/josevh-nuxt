@@ -48,18 +48,16 @@
         let docs = JSON.parse(JSON.stringify(this.$store.getters.docsByType(PrismicDocumentType)))
 
         docs.forEach(function (doc) {
-          let fromDateParts = doc.data.from.split('-')
-          doc.data.fromStr = new Date(fromDateParts[0], +fromDateParts[1] - 1, fromDateParts[2]).toLocaleDateString('en-US', dtStrOpts)
+          doc.data.fromStr = new Date(doc.data.from + 'T00:00:00').toLocaleDateString('en-US', dtStrOpts)
 
           if (doc.data.to) {
-            let toDateParts = doc.data.to.split('-')
-            doc.data.toStr = new Date(toDateParts[0], +toDateParts[1] - 1, toDateParts[2]).toLocaleDateString('en-US', dtStrOpts)
+            doc.data.toStr = new Date(doc.data.to + 'T00:00:00').toLocaleDateString('en-US', dtStrOpts)
           } else {
             doc.data.toStr = 'Present'
           }
         })
         docs.sort(function (a, b) { // desc
-          return new Date(component.prismicDom.Date(b.data.from)) - new Date(component.prismicDom.Date(a.data.from))
+          return new Date(new Date(b.data.from + 'T00:00:00')) - new Date(new Date(a.data.from + 'T00:00:00'))
         })
 
         return docs

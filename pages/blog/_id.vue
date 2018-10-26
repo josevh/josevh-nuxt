@@ -75,7 +75,7 @@
       documentDate () {
         if (!this.document) return null
 
-        return this.prismicDom.Date(this.document.data.publish_date)
+        return new Date(this.document.data.publish_date + 'T00:00:00')
       },
       documentDateStr () {
         if (!this.documentDate) return ''
