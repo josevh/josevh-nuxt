@@ -19,7 +19,6 @@
                     </div>
                 </li>
             </ul>
-            <!-- TODO: languages used -->
         </section>
     </div>
 </template>
@@ -49,10 +48,9 @@
         let docs = JSON.parse(JSON.stringify(this.$store.getters.docsByType(PrismicDocumentType)))
 
         docs.forEach(function (doc) {
-          // TODO: fix, months are 0-indexed in JS
-
           let fromDateParts = doc.data.from.split('-')
           doc.data.fromStr = new Date(fromDateParts[0], +fromDateParts[1] - 1, fromDateParts[2]).toLocaleDateString('en-US', dtStrOpts)
+
           if (doc.data.to) {
             let toDateParts = doc.data.to.split('-')
             doc.data.toStr = new Date(toDateParts[0], +toDateParts[1] - 1, toDateParts[2]).toLocaleDateString('en-US', dtStrOpts)
