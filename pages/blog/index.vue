@@ -20,8 +20,6 @@
   const PrismicDocumentType = 'blog_post'
   import { Date } from 'prismic-dom'
 
-  // TODO: fix dates
-
   export default {
     name: 'BlogIndex',
     head () {
