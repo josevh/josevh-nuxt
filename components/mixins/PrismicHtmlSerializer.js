@@ -1,5 +1,5 @@
 import { highlightAuto } from 'highlight.js'
-import 'highlight.js/styles/monokai-sublime.css'
+// css imported in ~/layouts/default.vue
 
 export const htmlSerializer = {
   methods: {
