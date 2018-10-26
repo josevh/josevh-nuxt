@@ -1,5 +1,5 @@
 import { highlightAuto } from 'highlight.js'
-import 'highlight.js/styles/monokai-sublime.css'
+// css imported in ~/layouts/default.vue
 
 export const htmlSerializer = {
   methods: {
@@ -9,7 +9,10 @@ export const htmlSerializer = {
         case Elements.preformatted:
           // prep preformatted text for highlighting
           // @link https://prismic.io/docs/javascript/templating/rich-text
-          return '<pre><code class="hljs">' + highlightAuto(element.text).value + '</code></pre>'
+          let langSubset = ['plaintext', 'php', 'javascript', 'python', 'css', 'json', 'markdown', 'ruby', 'shell', 'xml']
+          let highlight = highlightAuto(element.text, langSubset)
+
+          return `<pre><code class="hljs ${highlight.language}">${highlight.value}</code></pre>`
         default:
           return null
       }

@@ -21,12 +21,8 @@ const createStore = () => {
 
         return types
       },
-      docsByType: (state) => (type) => {
-        return state.docs.filter(doc => doc.type === type)
-      },
-      docByUID: (state) => (uid) => {
-        return state.docs.find(doc => doc.uid === uid)
-      },
+      docsByType: (state) => (type) => state.docs.filter(doc => doc.type === type),
+      docByUID: (state) => (uid) => state.docs.find(doc => doc.uid === uid),
       docNext: (state, getters) => (uid, type, sortProp, sortDirection = 'asc') => {
         let allowedSortDirections = ['asc', 'desc']
         if (allowedSortDirections.indexOf(sortDirection) === -1) {
@@ -56,13 +52,14 @@ const createStore = () => {
       docsRelated: (state, getters) => (doc) => {
         if (doc.tags.length === 0) return []
 
-        let docsRelated = [];
+        let docsRelated = []
 
         getters.docsByType(doc.type).forEach(d => {
           if (d.id !== doc.id) {
-            let tagsInCommonCount = d.tags.reduce((accumulator, tag) => {
-              return accumulator + (doc.tags.indexOf(tag) >= 0 ? 1 : 0)
-            }, 0)
+            let tagsInCommonCount = d.tags.reduce(
+              (accumulator, tag) => accumulator + (doc.tags.indexOf(tag) >= 0 ? 1 : 0),
+              0
+            )
             if (tagsInCommonCount > 0) {
               d.tagsInCommonCount = tagsInCommonCount
               docsRelated.push(d)
@@ -70,25 +67,43 @@ const createStore = () => {
           }
         })
 
-        return docsRelated.sort((a, b) => {
-          return b.tagsInCommonCount - a.tagsInCommonCount // desc order
-        })
+        return docsRelated.sort((a, b) => b.tagsInCommonCount - a.tagsInCommonCount) // desc order
       }
     },
     mutations: {
       setDocs (state, newDocs) {
         state.docs = newDocs
+      },
+      addDocs (state, newDocs) {
+        state.docs.push(...newDocs)
       }
     },
     actions: {
-      nuxtServerInit ({commit, state}) {
-        return Prismic.getApi(state.prismicApiEndpoint)
-          .then((api) => {
-            return api.query('', {pageSize: 100})
-          })
-          .then((response) => {
-            commit('setDocs', response.results)
-          })
+      async nuxtServerInit ({commit, state}) {
+        const api = await Prismic.getApi(state.prismicApiEndpoint)
+
+        let responseBlogPosts = await api.query(
+          Prismic.Predicates.at('document.type', 'blog_post'),
+          {pageSize: 100}
+        )
+        let responseProjects = await api.query(
+          Prismic.Predicates.at('document.type', 'project'),
+          {pageSize: 100}
+        )
+        let responseExperience = await api.query(
+          Prismic.Predicates.at('document.type', 'experience'),
+          {pageSize: 100}
+        )
+
+        commit('addDocs', responseBlogPosts.results)
+        commit('addDocs', responseProjects.results)
+        commit('addDocs', responseExperience.results)
+
+        return {
+          responseBlogPosts: responseBlogPosts,
+          responseProjects: responseProjects,
+          responseExperience: responseExperience,
+        }
       }
     }
   })

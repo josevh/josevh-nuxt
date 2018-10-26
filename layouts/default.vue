@@ -9,6 +9,7 @@
 <script>
   import Header from '~/components/Header.vue'
   import Footer from '~/components/Footer.vue'
+  import 'highlight.js/styles/monokai-sublime.css'
 
   export default {
     components: {Header, Footer}
