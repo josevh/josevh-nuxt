@@ -77,7 +77,7 @@ module.exports = {
     }]
   ],
   plugins: [
-    { src: '~/plugins/vue-silentbox', ssr: false }
+    { src: '~/plugins/vue-silentbox', mode: 'client' }
   ]
 }
 
