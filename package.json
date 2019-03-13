@@ -5,7 +5,7 @@
   "author": "Jose Herrera <josevictorherrera@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "nuxt --hostname app.test --port 80",
+    "dev": "nuxt --hostname 0.0.0.0 --port 8888",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -15,9 +15,9 @@
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.0.2",
     "highlight.js": "^9.13.0",
-    "nuxt": "^2.2.0",
+    "nuxt": "^2.4.5",
     "prismic-dom": "^2.1.0",
-    "prismic-javascript": "^1.5.0",
+    "prismic-javascript": "^2.0.1",
     "prismic-vue": "^1.3.0",
     "vue-silentbox": "^0.1.2"
   },
@@ -26,7 +26,7 @@
     "eslint": "^5.7.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
     "node-sass": "^4.9.4",
     "sass-loader": "^7.1.0"
   }
