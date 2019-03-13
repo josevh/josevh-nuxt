@@ -46,10 +46,6 @@ module.exports = {
         })
       }
     },
-    vendor: [
-      'prismic-javascript',
-      'prismic-dom'
-    ]
   },
   generate: {
     fallback: true,
