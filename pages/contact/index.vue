@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <div><img class="avatar" src="/avatar.jpg" alt="Jose Herrera avatar"></div>
-        <p>I live in Los Angeles, CA.<br>I am currently a Web Developer at Brighton Collectibles.</p>
+        <p>I live in Los Angeles, CA.<br>I am currently a Backend Web Engineer at Linden Lab working on Second Life.</p>
         <ul class="contact-links">
             <li class="contact-link"><a
                     href="mailto:jose@josevh.com?Subject=Hello%20Jose"
