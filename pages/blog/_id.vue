@@ -1,6 +1,6 @@
 <template>
     <div class="content" v-cloak>
-        <div v-if="!document" class="empty">Unable to locate requested project.</div>
+        <div v-if="!document" class="empty">Unable to locate requested blog entry.</div>
         <div v-if="typeof document !== 'undefined'">
             <div class="heading">
                 <h1 class="title">{{document.data.title[0].text}}</h1>
