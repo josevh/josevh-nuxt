@@ -61,7 +61,7 @@ module.exports = {
         {pageSize: 100}
       )
 
-      allResults = [].concat(responseBlogPosts.results, responseProjects.results)
+      let allResults = [].concat(responseBlogPosts.results, responseProjects.results)
 
       return allResults.map((doc) => {
         let route = linkResolver(doc);
