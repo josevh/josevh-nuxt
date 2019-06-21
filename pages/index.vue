@@ -10,7 +10,7 @@
             <p>For myself, I experiment with new technologies and languages. From <code>C#</code> in Unity to
                 <code>Java</code> for Android.</p>
             <p>For Linden Lab I work on Second Life internal tools and billing engine. 
-                I write in <code>python</code> and <code>php</code>.</p>
+                I write in <code>Python</code> and <code>PHP</code>.</p>
         </section>
         <section class="message">
             <h4>Where I'm headed</h4>
