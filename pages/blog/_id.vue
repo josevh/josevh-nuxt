@@ -64,7 +64,7 @@
     mixins: [htmlSerializer],
     computed: {
       headTitle () {
-          if (!this.document) return 'Whoops'
+          if (!this.document) return 'Not Found'
 
           return this.document.data.title[0].text
       },
@@ -88,6 +88,7 @@
       },
       documentDateStr () {
         if (!this.documentDate) return ''
+    
         return this.documentDate.toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
