@@ -49,21 +49,16 @@ module.exports = {
   },
   generate: {
     fallback: true,
-    routes: function () {
-      return Prismic.getApi(ApiEndpoint)
-        .then((api) => {
-          return api.query('')
-        })
-        .then((response) => {
-          return response.results.map((doc) => {
-            let route = linkResolver(doc)
-
-            return {
-              route: route,
-              payload: doc
-            }
-          })
-        })
+    routes: async function () {
+      const api = await Prismic.getApi(ApiEndpoint);
+      const response = await api.query('');
+      return response.results.map((doc) => {
+        let route = linkResolver(doc);
+        return {
+          route: route,
+          payload: doc
+        };
+      });
     },
     subFolders: false
   },
