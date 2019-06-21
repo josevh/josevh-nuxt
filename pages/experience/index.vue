@@ -14,8 +14,7 @@
                     <div class="desc"
                          v-html="prismicDom.RichText.asHtml(experience.data.description, linkResolver)"></div>
                     <div class="langs" v-if="experience.data.languages_used.length > 0"><span class="label">Languages used:</span>
-                        <span
-                                class="lang-str">{{ experience.data.languages_used.map(lang => {return lang.text}).join(', ') }}</span>
+                        <span class="lang-str">{{ experience.data.languages_used.map(lang => {return lang.text}).join(', ') }}</span>
                     </div>
                 </li>
             </ul>
