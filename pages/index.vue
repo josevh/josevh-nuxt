@@ -9,8 +9,8 @@
             <h4>What I do</h4>
             <p>For myself, I experiment with new technologies and languages. From <code>C#</code> in Unity to
                 <code>Java</code> for Android.</p>
-            <p>For Brighton Collectibles, I write applications in <code>PHP</code> and <code>Javascript</code> that help
-                the internal company efficiency as well as empower our customers.</p>
+            <p>For Linden Lab I work on Second Life internal tools and billing engine. 
+                I write in <code>python</code> and <code>php</code>.</p>
         </section>
         <section class="message">
             <h4>Where I'm headed</h4>
