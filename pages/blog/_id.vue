@@ -64,7 +64,13 @@
     mixins: [htmlSerializer],
     computed: {
       document () {
-        return this.$store.getters.docByUID(this.$route.params.id)
+        let doc = this.$store.getters.docByUID(this.$route.params.id)
+        if (doc) {
+            console.error(doc)
+            let docs = this.$store.getters.docsByType('blog_post')
+            console.error(docs)
+        }
+        return doc
       },
       documentNext() {
         return this.$store.getters.docNext(this.document.uid, this.document.type, 'publish_date', 'asc')
