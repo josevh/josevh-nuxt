@@ -51,7 +51,7 @@
     name: 'BlogPostItem',
     head () {
       return {
-        title: this.document.data.title[0].text
+        title: this.headTitle
       }
     },
     data () {
@@ -63,19 +63,22 @@
     },
     mixins: [htmlSerializer],
     computed: {
+      headTitle () {
+          if (!this.document) return 'Whoops'
+
+          return this.document.data.title[0].text
+      },
       document () {
-        let doc = this.$store.getters.docByUID(this.$route.params.id)
-        if (!doc) {
-            console.error(doc)
-            let docs = this.$store.getters.docsByType('blog_post')
-            console.error(docs)
-        }
-        return doc
+        return this.$store.getters.docByUID(this.$route.params.id)
       },
       documentNext() {
+        if (!this.document) return null
+
         return this.$store.getters.docNext(this.document.uid, this.document.type, 'publish_date', 'asc')
       },
       documentPrev() {
+        if (!this.document) return null
+
         return this.$store.getters.docNext(this.document.uid, this.document.type, 'publish_date', 'desc')
       },
       documentDate () {
