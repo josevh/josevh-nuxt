@@ -1,9 +1,9 @@
+import { initApi } from '../prismic.config';
 const Prismic = require('prismic-javascript')
 
 export const state = () => ({
     siteTitle: 'josevh',
     siteAuthor: 'Jose V Herrera',
-    prismicApiEndpoint: 'https://josevhcom.cdn.prismic.io/api/v2',
     docs: []
 })
 
@@ -81,7 +81,7 @@ export const mutations = {
 
 export const actions = {
     async nuxtServerInit ({commit, state}) {
-        const api = await Prismic.getApi(state.prismicApiEndpoint)
+        const api = await initApi()
 
         let responseBlogPosts = await api.query(
             Prismic.Predicates.at('document.type', 'blog_post'),
