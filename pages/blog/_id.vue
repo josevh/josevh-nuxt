@@ -65,7 +65,7 @@
     computed: {
       document () {
         let doc = this.$store.getters.docByUID(this.$route.params.id)
-        if (doc) {
+        if (!doc) {
             console.error(doc)
             let docs = this.$store.getters.docsByType('blog_post')
             console.error(docs)
