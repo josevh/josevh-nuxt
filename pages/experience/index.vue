@@ -25,7 +25,7 @@
 <script>
   const PrismicDom = require('prismic-dom')
   const PrismicDocumentType = 'experience'
-  import LinkResolver from '~~/LinkResolver'
+  import { linkResolver } from '~~/prismic.config'
 
   export default {
     name: 'ExperienceIndex',
@@ -37,7 +37,7 @@
     data () {
       return {
         prismicDom: PrismicDom,
-        linkResolver: LinkResolver
+        linkResolver: linkResolver
       }
     },
     computed: {

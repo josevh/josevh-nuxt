@@ -44,7 +44,7 @@
 
 <script>
   const PrismicDom = require('prismic-dom')
-  import LinkResolver from '~~/LinkResolver'
+  import { linkResolver } from '~~/prismic.config'
   import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
 
   export default {
@@ -57,7 +57,7 @@
     data () {
       return {
         prismicDom: PrismicDom,
-        linkResolver: LinkResolver,
+        linkResolver: linkResolver,
         imageGalleryIndex: null
       }
     },

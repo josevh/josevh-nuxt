@@ -1,6 +1,5 @@
 const Prismic = require('prismic-javascript')
-const ApiEndpoint = 'https://josevhcom.cdn.prismic.io/api/v2'
-import linkResolver from './LinkResolver.js'
+import { initApi, linkResolver } from './prismic.config'
 
 module.exports = {
   /*
@@ -50,15 +49,18 @@ module.exports = {
   generate: {
     fallback: true,
     routes: async function () {
-      const api = await Prismic.getApi(ApiEndpoint);
-      const response = await api.query('');
+      const api = await initApi()
+      // only fetch those for which a related `_id.vue` exists
+      const response = await api.query(
+        Prismic.Predicates.any('document.type', ['blog_post', 'project'])
+      )
       return response.results.map((doc) => {
         let route = linkResolver(doc);
         return {
           route: route,
           payload: doc
-        };
-      });
+        }
+      })
     },
     subFolders: false
   },

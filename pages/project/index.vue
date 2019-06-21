@@ -19,7 +19,7 @@
 <script>
   const PrismicDom = require('prismic-dom')
   const PrismicDocumentType = 'project'
-  import LinkResolver from '~~/LinkResolver'
+  import { linkResolver } from '~~/prismic.config'
   import { htmlSerializer } from '~~/components/mixins/PrismicHtmlSerializer'
 
   export default {
@@ -32,7 +32,7 @@
     data () {
       return {
         prismicDom: PrismicDom,
-        linkResolver: LinkResolver
+        linkResolver: linkResolver
       }
     },
     mixins: [htmlSerializer],
