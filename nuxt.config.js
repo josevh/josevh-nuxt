@@ -50,11 +50,20 @@ module.exports = {
     fallback: true,
     routes: async function () {
       const api = await initApi()
+
       // only fetch those for which a related `_id.vue` exists
-      const response = await api.query(
-        Prismic.Predicates.any('document.type', ['blog_post', 'project'])
+      let responseBlogPosts = await api.query(
+        Prismic.Predicates.at('document.type', 'blog_post'),
+        {pageSize: 100}
       )
-      return response.results.map((doc) => {
+      let responseProjects = await api.query(
+        Prismic.Predicates.at('document.type', 'project'),
+        {pageSize: 100}
+      )
+
+      allResults = [].concat(responseBlogPosts.results, responseProjects.results)
+
+      return allResults.map((doc) => {
         let route = linkResolver(doc);
         return {
           route: route,
