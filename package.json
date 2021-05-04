@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.4.0",
-    "highlight.js": "^10.2.0",
+    "highlight.js": "^10.4.1",
     "nuxt": "^2.14.6",
     "prismic-dom": "^2.2.4",
     "prismic-javascript": "^3.0.2",
